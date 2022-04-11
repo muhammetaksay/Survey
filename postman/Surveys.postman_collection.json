@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "5fab3ef3-1531-441f-9148-d8e91dfc49fd",
+		"name": "Surveys",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Survey",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/survey/create?title=Yeni&description=Survey Descc1&last_time=2022-07-30&status=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"survey",
+						"create"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Yeni"
+						},
+						{
+							"key": "description",
+							"value": "Survey Descc1"
+						},
+						{
+							"key": "last_time",
+							"value": "2022-07-30"
+						},
+						{
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Survey",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/survey/delete/1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"survey",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Section",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/section/delete/1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"section",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Question",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/question/delete/1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"question",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/customer/create?customer_id=3&survey_id=1&status=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"customer",
+						"create"
+					],
+					"query": [
+						{
+							"key": "customer_id",
+							"value": "3"
+						},
+						{
+							"key": "survey_id",
+							"value": "1"
+						},
+						{
+							"key": "last_time",
+							"value": "2022-07-30",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Section",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/section/create?survey_id=1&section=Bölüm 3&orderby=1&status=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"section",
+						"create"
+					],
+					"query": [
+						{
+							"key": "customer_id",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "survey_id",
+							"value": "1"
+						},
+						{
+							"key": "last_time",
+							"value": "2022-07-30",
+							"disabled": true
+						},
+						{
+							"key": "section",
+							"value": "Bölüm 3"
+						},
+						{
+							"key": "orderby",
+							"value": "1"
+						},
+						{
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/question/create?section_id=3&question=Öneriler&type=text&status=1&orderby=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"question",
+						"create"
+					],
+					"query": [
+						{
+							"key": "section_id",
+							"value": "3"
+						},
+						{
+							"key": "question",
+							"value": "Öneriler"
+						},
+						{
+							"key": "type",
+							"value": "text"
+						},
+						{
+							"key": "status",
+							"value": "1"
+						},
+						{
+							"key": "orderby",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Survey",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/getsurvey/1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"getsurvey",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST ANSWERS",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"answers\": [\r\n        {\r\n            \"question_id\": \"1\",\r\n            \"answer\": \"1\"\r\n        },\r\n        {\r\n            \"question_id\": \"2\",\r\n            \"answer\": \"8\"\r\n        },\r\n        {\r\n            \"question_id\": \"3\",\r\n            \"answer\": \"6\"\r\n        },\r\n        {\r\n            \"question_id\": \"4\",\r\n            \"answer\": \"1\"\r\n        },\r\n        {\r\n            \"question_id\": \"5\",\r\n            \"answer\": \"İçere2222n\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://survey.test/api/answers?name=test&email=test@test.com&survey_id=1&customer_id=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"answers"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test"
+						},
+						{
+							"key": "email",
+							"value": "test@test.com"
+						},
+						{
+							"key": "survey_id",
+							"value": "1"
+						},
+						{
+							"key": "customer_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Section",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/section/update/1?customer_id=3&survey_id=1&status=1&section=Test&orderby=desc",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"section",
+						"update",
+						"1"
+					],
+					"query": [
+						{
+							"key": "customer_id",
+							"value": "3"
+						},
+						{
+							"key": "survey_id",
+							"value": "1"
+						},
+						{
+							"key": "last_time",
+							"value": "2022-07-30",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "1"
+						},
+						{
+							"key": "section",
+							"value": "Test"
+						},
+						{
+							"key": "orderby",
+							"value": "desc"
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Survey",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/survey/update/5?title=Yeni22&description=Survey Descc1&last_time=2022-07-30&status=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"survey",
+						"update",
+						"5"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Yeni22"
+						},
+						{
+							"key": "description",
+							"value": "Survey Descc1"
+						},
+						{
+							"key": "last_time",
+							"value": "2022-07-30"
+						},
+						{
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
