@@ -111,12 +111,12 @@
 			"response": []
 		},
 		{
-			"name": "Create Customer",
+			"name": "Survey Customer Relationship",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://survey.test/api/customer/create?customer_id=3&survey_id=1&status=1",
+					"raw": "http://survey.test/api/survey_customer/create?customer_id=3&survey_id=1&status=1",
 					"protocol": "http",
 					"host": [
 						"survey",
@@ -124,7 +124,7 @@
 					],
 					"path": [
 						"api",
-						"customer",
+						"survey_customer",
 						"create"
 					],
 					"query": [
@@ -137,9 +137,74 @@
 							"value": "1"
 						},
 						{
-							"key": "last_time",
-							"value": "2022-07-30",
-							"disabled": true
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/survey_customer/create?customer_id=3&survey_id=1&status=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"survey_customer",
+						"create"
+					],
+					"query": [
+						{
+							"key": "customer_id",
+							"value": "3"
+						},
+						{
+							"key": "survey_id",
+							"value": "1"
+						},
+						{
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/survey_customer/create?customer_id=3&survey_id=1&status=1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"survey_customer",
+						"create"
+					],
+					"query": [
+						{
+							"key": "customer_id",
+							"value": "3"
+						},
+						{
+							"key": "survey_id",
+							"value": "1"
 						},
 						{
 							"key": "status",
@@ -258,6 +323,87 @@
 						"api",
 						"getsurvey",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/getcustomer/1",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"getcustomer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Survey List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/surveys",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"surveys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/customers",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Section List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://survey.test/api/sections",
+					"protocol": "http",
+					"host": [
+						"survey",
+						"test"
+					],
+					"path": [
+						"api",
+						"sections"
 					]
 				}
 			},
