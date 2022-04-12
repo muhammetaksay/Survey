@@ -2,65 +2,74 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Customer;
+use App\Models\Question;
+use App\Models\Survey;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "customer_id" => "required",
-            "survey_id" => "required",
+            "name" => "required",
+            "email" => "required",
             "status" => "required",
         ]);
         
-        
-        $customer = new Customer();
-        $customer->customer_id = $request->customer_id;
-        $customer->survey_id = $request->survey_id;
-        $customer->status = $request->status;
-        $customer->save();
+        Customer::firstOrCreate(
+            ['email' => $request->email],
+            ['name' => $request->name, 'status' => 1]
+        );
 
         return "true";
 
     }
 
+
+    public function list()
+    {
+        $customer = Customer::where('status',1)->get();
+        return $customer;
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function index($id)
     {
-        //
+        $customer = Customer::with("surveys")->find($id);
+        foreach($customer->surveys as $sur){
+            $survey = Survey::with("sections")->find($sur->id)->get();
+            foreach($survey as $surveys){
+                return [
+                'name' => $customer->name,
+                'email' => $customer->email,
+                'survey' => $surveys->title,
+                'sections' => collect($surveys->sections)->map(function($x) use ($customer){
+                    $questions = Question::where('section_id', $x->id)->get();
+                    return [
+                        'section' => $x->section,
+                        'title' => $x->section,
+                        'questions' => collect($questions)->map(function($y) use($customer){
+                            return [
+                                'question' => $y->question,
+                                'type' => $y->type,
+                                'answer' => collect(Answer::where('question_id', $y->id)->where('customer_id', $customer->id)->get())->map(function($use){
+                                        return $use->answer;
+                                }),
+                            ];
+                        })
+                    ];
+                }),
+            ];
+        }
+            
+        }
     }
 
     /**
@@ -84,15 +93,15 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            "customer_id" => "required",
-            "survey_id" => "required",
+            "email" => "required",
+            "name" => "required",
             "status" => "required",
         ]);
         
         
         $customer = Customer::find($id);
-        $customer->customer_id = $request->customer_id;
-        $customer->survey_id = $request->survey_id;
+        $customer->email = $request->email;
+        $customer->name = $request->name;
         $customer->status = $request->status;
         $customer->save();
 
@@ -107,6 +116,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sections = Customer::where('id', $id)->delete();
+        return true;
     }
 }

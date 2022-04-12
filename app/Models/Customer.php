@@ -11,4 +11,9 @@ class Customer extends Model
     public $timestamps = false;
 
     protected $fillable = ['name', 'email', 'survey_id', 'customer_id'];
+
+    public function surveys()
+    {
+        return $this->hasMany(SurveyCustomer::class, 'customer_id', 'id');
+    }
 }

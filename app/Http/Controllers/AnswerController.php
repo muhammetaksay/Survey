@@ -16,24 +16,21 @@ class AnswerController extends Controller
     public function index(Request $request)
     {
         //
-        $name = $request->name;
-        $email = $request->email;
         $survey_id = $request->survey_id;
         $customer_id = $request->customer_id;
 
-        $customer_add = Customer::updateOrCreate(
-            ['name' => $name, 'email' => $email, 'survey_id' => $survey_id, 'customer_id' => $customer_id],
-            ['name' => $name, 'email' => $email, 'survey_id' => $survey_id, 'customer_id' => $customer_id],
-        );
-        $new_customer_id = $customer_add->id;
-
-        foreach($request->answers as $ans){
-            $answer = Answer::updateOrCreate(
-                ['question_id' => $ans["question_id"], 'survey_id' => $survey_id, 'customer_id' => $new_customer_id],
-                ['question_id' => $ans["question_id"], 'answer' => $ans["answer"], 'survey_id' => $survey_id, 'customer_id' => $new_customer_id]
-            );
+        $customer = Customer::where('id', $customer_id)->get();
+        if($customer->count() > 0){   
+            foreach($request->answers as $ans){
+                Answer::updateOrCreate(
+                    ['question_id' => $ans["question_id"], 'survey_id' => $survey_id, 'customer_id' => $customer_id],
+                    ['question_id' => $ans["question_id"], 'answer' => $ans["answer"], 'survey_id' => $survey_id, 'customer_id' => $customer_id]
+                );
+            }
+            return true;
+        }else{
+            return "Customer Not Found!";
         }
-        return true;
     }
 
     /**

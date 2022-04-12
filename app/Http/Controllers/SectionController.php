@@ -18,6 +18,11 @@ class SectionController extends Controller
         //
     }
 
+    public function list()
+    {
+        $sections = Section::where('status',1)->get();
+        return $sections;
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -44,9 +44,10 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function list()
     {
-        //
+        $surveys = Survey::where('status',1)->get();
+        return $surveys;
     }
 
     /**
